@@ -1,0 +1,36 @@
+<div *ngIf="!standings.length; else leagueTable">
+    <h3>No data loaded from the API</h3>
+</div>
+<ng-template #leagueTable>
+    <div class="bg-white shadow-md p-6 text-sm text-left">
+        <table class="table-auto w-full">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="p-2 font-semibold">Name</th>
+                    <th class="p-2 font-semibold">Rank</th>
+                    <th class="p-2 font-semibold">Games</th>
+                    <th class="p-2 font-semibold">W</th>
+                    <th class="p-2 font-semibold">L</th>
+                    <th class="p-2 font-semibold">D</th>
+                    <th class="p-2 font-semibold">Points</th>
+                    <th class="p-2 font-semibold">Goal Difference</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let standing of standings" class="border-y border-slate-100 hover:bg-slate-200 cursor-pointer" [routerLink]="['/team/', standing.team.id]">
+                    <td class="p-2">{{standing.rank}}</td>
+                    <td class="p-2 flex flex-row gap-4">
+                            <img [src]="standing.team.logo" height="24" width="24">
+                            {{standing.team.name}}
+                    </td>
+                    <td class="p-2">{{standing.all.played}}</td>
+                    <td class="p-2">{{standing.all.win}}</td>
+                    <td class="p-2">{{standing.all.lose}}</td>
+                    <td class="p-2">{{standing.all.draw}}</td>
+                    <td class="p-2">{{standing.points}}</td>
+                    <td class="p-2">{{standing.goalsDiff}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

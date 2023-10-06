@@ -1,0 +1,5 @@
+<div class="flex flex-row gap-4 shadow-md bg-white my-6">
+    <a *ngFor="let Country of Countries" href="#" (click)="changeCountry(Country.id)" class="text-opacity-80 hover:text-opacity-100 hover:bg-slate-100 text-gray-800 p-4" [ngClass]="{'font-bold': Country.id === this.stateService.SelectedCountry.id}" id=`{{Country.name}}Select`>
+        {{Country.name}}
+    </a>
+</div>

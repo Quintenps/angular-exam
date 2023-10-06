@@ -1,0 +1,26 @@
+<div *ngIf="!GameResults.length; else gameResultTable">
+    <h3>No data loaded from the API</h3>
+</div>
+<ng-template #gameResultTable>
+    <div class="bg-white shadow-md p-6 text-sm text-left">
+        <table class="table-auto w-full">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="p-2 font-semibold">Home</th>
+                    <th class="p-2 font-semibold">Score</th>
+                    <th class="p-2 font-semibold">Away</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let GameResult of GameResults" class="border-y border-slate-100 hover:bg-slate-200 cursor-pointer">
+                    <td>{{ GameResult.teams.home.name }}</td>
+                    <td>{{ GameResult.score.fulltime.home }} - {{ GameResult.score.fulltime.away }}</td>
+                    <td>{{ GameResult.teams.away.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="my-4">
+        <a routerLink="/" class="bg-blue-400 text-white p-2">Back</a>
+    </div>
+</ng-template>
